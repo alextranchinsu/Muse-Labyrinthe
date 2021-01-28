@@ -37,8 +37,8 @@ Notre but est de pouvoir visualiser en temps réel le niveau de stress sur l'éc
 
 ### Labyrinthe
 
-Pour faire marcher ce projet, [cliquez ici](https://github.com/adrienmorel/Muse-Labyrinthe/tree/master/Labyrinthe)
+Pour faire marcher ce projet, [cliquez ici](https://github.com/alextranchinsu/Muse-Labyrinthe/tree/main/Labyrinthe)
 
 ### Android
 
-Pour faire marcher ce projet, [cliquez ici](https://github.com/alextranchinsu/Muse-Labyrinthe/tree/master/Muse%20Android)
+Pour faire marcher ce projet, [cliquez ici](https://github.com/alextranchinsu/Muse-Labyrinthe/tree/main/MuseAndroid)
