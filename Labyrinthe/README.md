@@ -1,31 +1,33 @@
 <h1 align="center">
-​    Labyritnhe
+​    Labyrinthe
 </h1>
 
-Ce projet est codé en C++. Il permet la modélisation d'un labyrinthe en 3D à partir d'une feuille. Ce projet fonctionne sur Windows 10 avec Visual Studio.
+Ce projet est codé en C++ et utilise les librairies OpenCV et OpenGL. Il permet la modélisation d'un labyrinthe en 3D à partir d'une feuille. Ce projet fonctionne sur Windows 10 avec Visual Studio.
 
 ## Déploiement
 
+### Visual Studio
+
+Télécharger Visual Studio Community 2019
+
 ### OpenCV
 
-Mettre la bibliothèque OpenCV à la racine du disque (C:/). Prendre le OpenCV 3.4.1-x64 avec les configuration suivante :
-- MinGW-x64-4.8.1-release-posix-seh-rev5
-- Windows-10-64bit
-- CMake-3.12.0
+Télécharger la dernière release d'OpenCV [ici](https://github.com/opencv/opencv/releases)
 
-Cliquer sur le lien suivant : [https://github.com/huihut/OpenCV-MinGW-Build](https://github.com/huihut/OpenCV-MinGW-Build)
-Il faut ajouter le dossier /bin au path.
+### CMake
+
+Télécharger la dernière distribution binaire Windows win64-x64 Installer [ici](https://cmake.org/download/)
+
 ### FreeGlut
 
-Télécharger la bibliothèque au lien suivant : [https://www.transmissionzero.co.uk/files/software/development/GLUT/freeglut-MinGW.zip](https://www.transmissionzero.co.uk/files/software/development/GLUT/freeglut-MinGW.zip).
-Il faut ajouter la dll x64 dans System32.
-Il faut mettre la bibliothèque sur la racine du disque (C:/)
-### Environnement C++
+Télécharger la bibliothèque OpenGL FreeGlut 3.0.0 MSVC Package[ici](https://www.transmissionzero.co.uk/software/freeglut-devel/).
 
-L'environnement C++ doit être mingw64, les config suivante :
-- La version utilisé est 5.3.0
-- Architecture x86_x64
-- Thread Posix
-- Exception seh
-- Build revision 0
+### Installation
 
+Faire un CMake d'OpenCV en activant OpenGL et opencv_world.
+Créer un projet Visual Studio en x64 et importer les fichiers cpp et h du projet
+Paramétrer le projet avec les librairies OpenCV et Freeglut
+
+## Documentation
+
+PLus d'informations sur l'architecture, l'installation et le fonctionnement du projet dans la documentation technique
