@@ -6,7 +6,7 @@ Ce projet est une application Android. Il permet de récuperer les données du c
 
 ## Déploiement
 
-## Code
+### Code
 
 Le code se trouve dans le dossier CerveauEmotion. Télécharger le.
 

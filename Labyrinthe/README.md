@@ -20,14 +20,14 @@ Télécharger la dernière distribution binaire Windows win64-x64 Installer [ici
 
 ### FreeGlut
 
-Télécharger la bibliothèque OpenGL FreeGlut 3.0.0 MSVC Package[ici](https://www.transmissionzero.co.uk/software/freeglut-devel/).
+Télécharger la bibliothèque OpenGL FreeGlut 3.0.0 MSVC Package [ici](https://www.transmissionzero.co.uk/software/freeglut-devel/).
 
 ### Installation
 
-Faire un CMake d'OpenCV en activant OpenGL et opencv_world.
-Créer un projet Visual Studio en x64 et importer les fichiers cpp et h du projet
-Paramétrer le projet avec les librairies OpenCV et Freeglut
+Faire un CMake d'OpenCV en activant OpenGL et opencv_world <br>
+Créer un projet Visual Studio en x64 et importer les fichiers cpp et h du projet <br>
+Paramétrer le projet avec les librairies OpenCV et Freeglut <br>
 
 ## Documentation
 
-PLus d'informations sur l'architecture, l'installation et le fonctionnement du projet dans la documentation technique
+Plus d'informations sur l'architecture, l'installation et le fonctionnement du projet dans la documentation technique
