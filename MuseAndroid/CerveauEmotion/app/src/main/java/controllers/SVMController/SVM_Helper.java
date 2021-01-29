@@ -181,7 +181,7 @@ public class SVM_Helper {
 
         Date d = new Date();
 
-        String message = "Data=" + progress + d.getTime() + ";";
+        String message = "Data=" + progress + "/" + d.getTime() + ";";
         Log.d("ip_value in SVMHelper", ip);
 
         UDPSender udpSender = new UDPSender(ip);

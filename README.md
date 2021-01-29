@@ -9,7 +9,7 @@ Ce projet est le fruit d'une fusion entre deux projets existants. Leurs descript
 
 Le Labyrinthe est un projet d'imagerie. Dans un premier temps, sur une feuille en papier, il faut dessiner un labyrinthe avec des normes à respecter. Comme ceci :
 
-<img src="Labyrinthe_2D.png" width="284" height="200" display="block" margin-left="auto" margin-right="auto">
+<img src="Labyrinthe_2D.png" width="284" height="200">
 
 Ensuite, il faut placer cette feuille devant la caméra de l'ordinateur, qui va modéliser le labyrinthe en 3D sur la feuille comme ceci:
 
@@ -30,7 +30,7 @@ Notre but est de pouvoir visualiser en temps réel le niveau de stress sur l'éc
 
 |            Calme            |            Stresser             |         
 | :-------------------------: | :-------------------------: | 
-| ![Screen0](Calme.png) | ![Screen1](Stresser.png) | 
+| ![Screen0](Calme.png) | ![Screen1](Stress.png) | 
 
 
 ## Déploiement
