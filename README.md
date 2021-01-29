@@ -28,9 +28,9 @@ Notre but est de pouvoir visualiser en temps réel le niveau de stress sur l'éc
 
 ## Résultat
 
-|            Calme            |            Stresser             |         
+|            Calme            |            Stress             |         
 | :-------------------------: | :-------------------------: | 
-| ![Screen0](Calme.png) | ![Screen1](Stress.png) | 
+| <img src="Calme.png"> | <img src="Stress.png"> | 
 
 
 ## Déploiement
