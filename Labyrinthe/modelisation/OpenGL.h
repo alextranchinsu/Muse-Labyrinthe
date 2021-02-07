@@ -24,7 +24,6 @@ private:
     /// Nombre d'images par seconde
     int const MAX_FPS = 60;
 
-    int nbCollisions;
 
     /// Parametres du drapeau
     double const FLAG_PIPE_HEIGHT = 0.15;
@@ -63,6 +62,10 @@ private:
     /// Données de stress du casque Muse
     unsigned int progress;
     std::vector<int> progressData;
+
+    int nbCollisions;
+
+    bool isWritten;
 
     void drawAxes();
     void drawMazeGround();

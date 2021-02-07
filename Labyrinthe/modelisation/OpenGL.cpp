@@ -8,6 +8,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include "OpenGL.h"
 #include "../physics/CollisionDetection.h"
+#include "../writing/CSVWriter.h"
 #include <ctime>
 #include <iomanip>
 #include <sstream>
@@ -38,6 +39,7 @@ OpenGL::OpenGL(GlutMaster * glutMaster, int setWidth, int setHeight, int setInit
     this->anaglyph = anaglyph;
 
     this->nbCollisions = 0;
+    this->isWritten = false;
 
     this->textMaze = cv::imread("assets/gazon.jpg"); ///texture du sol du labyrinthe
     this->textWall = cv::imread("assets/mazeWall.png"); ///texture du mur du labyrinthe
@@ -72,6 +74,7 @@ void OpenGL::CallBackDisplayFunc(){
 
     bool endGame = false;
 
+
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
     glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
 
@@ -98,7 +101,7 @@ void OpenGL::CallBackDisplayFunc(){
 
     if(progress >= 50){
 
-        double alphaMax = 0.40;
+        double alphaMax = 0.50;
         double alphaMin = 0;
 
         double valMax = 100;
@@ -107,14 +110,14 @@ void OpenGL::CallBackDisplayFunc(){
 
         //APPLY A FILTER
         cv::Mat filtre = this->textCam(cv::Rect(0, 0, this->textCam.cols, this->textCam.rows));
-        cv::Mat color(filtre.size(), CV_8UC3, rouge);
+        cv::Mat color(filtre.size(), CV_8UC3, vert);
         int val = (int)valMax - this->progress;
         double alpha = 1 - ((alphaMax - alphaMin)/(valMax - valMin)) * val + alphaMin;
         cv::addWeighted(color, alpha, filtre, 1.0 - alpha , 0.0, filtre);
 
     }else{
 
-        double alphaMax = 0.50;
+        double alphaMax = 0.40;
         double alphaMin = 0;
 
         double valMax = 49;
@@ -123,25 +126,26 @@ void OpenGL::CallBackDisplayFunc(){
 
         //APPLY A FILTER
         cv::Mat filtre = this->textCam(cv::Rect(0, 0, this->textCam.cols, this->textCam.rows));
-        cv::Mat color(filtre.size(), CV_8UC3, vert);
+        cv::Mat color(filtre.size(), CV_8UC3, rouge);
         int val = (int)valMax - this->progress;
         double alpha = ((alphaMax - alphaMin)/(valMax - valMin)) * val + alphaMin;
         cv::addWeighted(color, alpha, filtre, 1.0 - alpha , 0.0, filtre);
     }
 
-    rectangle(   this->textCam ,
-                 Point2f (startXProgress ,  startYProgress),
-                 Point2f (startXProgress + ((float)((100-this->progress)*widthProgress))/100 , startYProgress + heighProgress ),
-                 vert,
-                 - 1 ,
-                 8  );
+    //Jauge de stress
+    rectangle(this->textCam ,
+        Point2f (startXProgress ,  startYProgress),        
+        Point2f (startXProgress + ((float)((this->progress)*widthProgress))/100 , startYProgress + heighProgress ),
+        vert,
+        - 1 ,
+        8);
 
-    rectangle(   this->textCam ,
-                 Point2f (startXProgress + ((float)((100-this->progress)*widthProgress))/100,  startYProgress),
-                 Point2f (startXProgress + widthProgress , startYProgress + heighProgress),
-                 rouge,
-                 - 1 ,
-                 8  );
+    rectangle(this->textCam ,
+        Point2f (startXProgress + ((float)((this->progress)*widthProgress))/100,  startYProgress), 
+        Point2f (startXProgress + widthProgress , startYProgress + heighProgress),
+        rouge,
+        - 1 ,
+        8);
 
     //string pressToExit = "press q to exit";
     putText(this->textCam, to_string(fps), Point2i(0, 10), FONT_HERSHEY_PLAIN, 0.9, Scalar(0, 0, 255), 1);
@@ -159,7 +163,7 @@ void OpenGL::CallBackDisplayFunc(){
         destroyAllWindows();
 
         //Calcul du stress moyen
-        double progressAverage = 0;
+        double progressAverage = 0.0;
         for (int i = 0; i < progressData.size(); i++) {
             progressAverage = progressAverage + progressData.at(i);
         }
@@ -183,6 +187,24 @@ void OpenGL::CallBackDisplayFunc(){
         putText(this->textCam, stringAverage + "%", Point2i(635, 580), FONT_HERSHEY_PLAIN, 4, Scalar(225, 238, 251), 4);
 
         endGame = true;
+
+
+        if (!this->isWritten) {
+            //Sauvegarde des données dans un fichier
+            CSVWriter writeObject("statistiques.csv", (int)difftime(time(nullptr), start), getNBCollisions(), progressAverage);
+            //Vérification de l'existence du fichier
+            if (!writeObject.doesFileExists()) {
+                //Création des colonnes si le fichier n'existe pas
+                writeObject.writeColumnsName();
+            }
+            //Ecriture d'une nouvelle ligne
+            writeObject.writeLine();
+            this->isWritten = true;
+        }
+
+        
+
+        cout << "Bonsoir" << endl;
     }
 
 

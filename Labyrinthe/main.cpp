@@ -117,7 +117,7 @@ int main(int argc, char** argv) {
         }
         int64 tick2 = getTickCount();
         int64 sec = (double)(tick2 - tick) / getTickFrequency();
-        cout << ratio << endl;
+        //cout << ratio << endl;
 
         if (sec == 1) {
             putText(currentFrame, "3", Point2i((currentFrame.cols - textSize3.width) / 2, 100), FONT_HERSHEY_PLAIN, 6, Scalar(0, 255, 0), 2);
@@ -205,7 +205,7 @@ void loop(int endGame){
     if (coordCorner.size() == 4 && !edgeDetection.isReversed(coordCorner)) {
 
         double aire = calculateDistance(coordCorner[0], coordCorner[1]) * calculateDistance(coordCorner[1], coordCorner[2]);
-        cout << aire << endl;
+        //cout << aire << endl;
 
         /// Calcul de l'aire pour réduire les saccades
         if (aire > 20000.0 && aire < 170000.0) {
@@ -420,10 +420,12 @@ DWORD WINAPI getMuseResult(LPVOID lpProgress) {
         inet_ntop(AF_INET, &client.sin_addr, clientIp, 256);
 
         // Display the message / who sent it
-        //cout << buffer << endl;
+        cout << buffer << endl;
 
         int start = 0;
-        while (buffer[start] < 48 || buffer[start] > 57) start++;
+        while (buffer[start] != '=') start++;
+        int middle = start + 1;
+        while (buffer[middle] != '/') middle++;
         int end = start + 1;
         while (buffer[end] != ';') end++;
 
@@ -432,8 +434,10 @@ DWORD WINAPI getMuseResult(LPVOID lpProgress) {
         char lastProgress = buffer[start+1];
 
         string progress_str;
-        progress_str.push_back(firstProgress);
-        progress_str.push_back(lastProgress);
+        for (int i = start+1; i < middle; i++) {
+            progress_str.push_back(buffer[i]);
+        }
+
         progress = (unsigned int)atoi(progress_str.c_str());
 
         //Isolation des données de date
