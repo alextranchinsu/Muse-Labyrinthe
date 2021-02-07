@@ -8,7 +8,7 @@ Ce projet est codé en C++ et utilise les librairies OpenCV et OpenGL. Il permet
 
 ### Visual Studio
 
-Télécharger Visual Studio Community 2019
+Télécharger Visual Studio Community 2019 [ici](https://visualstudio.microsoft.com/fr/)
 
 ### OpenCV
 
@@ -20,7 +20,7 @@ Télécharger la dernière distribution binaire Windows win64-x64 Installer [ici
 
 ### FreeGlut
 
-Télécharger la bibliothèque OpenGL FreeGlut 3.0.0 MSVC Package[ici](https://www.transmissionzero.co.uk/software/freeglut-devel/).
+Télécharger la bibliothèque OpenGL FreeGlut 3.0.0 MSVC Package [ici](https://www.transmissionzero.co.uk/software/freeglut-devel/).
 
 ### Installation
 
@@ -30,4 +30,4 @@ Paramétrer le projet avec les librairies OpenCV et Freeglut
 
 ## Documentation
 
-PLus d'informations sur l'architecture, l'installation et le fonctionnement du projet dans la documentation technique
+Plus d'informations sur l'architecture, l'installation et le fonctionnement du projet dans la documentation technique
